@@ -3,7 +3,7 @@ from datetime import datetime
 import pandas as pd
 import random
 
-list_size = 10
+list_size = 10000
 
 countries = ["United Kingdom",
             "France",
@@ -67,7 +67,7 @@ stock_code = np.random.randint(4000, size = list_size).tolist()
 description = random.choices(items, k = list_size)
 quantity = np.random.randint(5, size = list_size).tolist()
 invoice_date = [datetime.strptime(str(x), '%Y%m%d%H%M%S').strftime("%Y-%m-%d %H:%M:%S") for x in datetime_int]
-unit_price = np.random.randint(4, size=list_size).tolist()
+unit_price = [float("{:.2f}".format(random.random()*10)) for x in range(list_size)]
 customer_id = np.random.randint(500, size=list_size).tolist()
 country= random.choices(countries, k = list_size)
 
@@ -76,4 +76,4 @@ cols = ["invoice_no", "stock_code", "description", "quantity", "invoice_date", "
 
 df = pd.DataFrame(list(zip(invoice_no, stock_code, description, quantity, invoice_date, unit_price, customer_id, country)), columns=cols)
 
-print(df)
+df.to_csv('/home/isamu/workplace/sample_data/sales.csv', index=False)

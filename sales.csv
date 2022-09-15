@@ -1,0 +1,5 @@
+invoice_no,stock_code,description,quantity,invoice_date,unit_price,customer_id,country
+1238,3060,Maracas,1,2012-02-16 13:31:11,8.59,162,United Kingdom
+2535,2276,Xylophone,4,2012-02-21 02:40:00,0.55,94,Italy
+3643,2236,Bass Guitar,4,2012-02-17 00:53:30,4.42,310,Lebanon
+615,2869,Zither,3,2012-02-21 15:56:21,7.83,479,Norway
