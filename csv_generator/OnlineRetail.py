@@ -2,6 +2,7 @@ import numpy as np
 from datetime import datetime
 import pandas as pd
 import random
+import os
 
 list_size = 10000
 
@@ -55,10 +56,10 @@ items = ["Bass Guitar",
          "Kazoo", 
          "Snare Drum"]
 
-years = np.char.mod('%d',np.random.randint(20120213, high=20120223, size=4, dtype=int))
-hours = np.char.mod('%d',np.random.randint(00, high=23, size=4, dtype=int))
-minutes = np.char.mod('%d',np.random.randint(00, high=59, size=4, dtype=int))
-seconds = np.char.mod('%d',np.random.randint(00, high=59, size=4, dtype=int))
+years = np.char.mod('%d',np.random.randint(20120213, high=20120223, size=list_size, dtype=int))
+hours = np.char.mod('%d',np.random.randint(00, high=23, size=list_size, dtype=int))
+minutes = np.char.mod('%d',np.random.randint(00, high=59, size=list_size, dtype=int))
+seconds = np.char.mod('%d',np.random.randint(00, high=59, size=list_size, dtype=int))
 datetime_np = np.stack((years, hours, minutes, seconds), axis=1).tolist()
 datetime_int = [x[0]+x[1].zfill(2)+x[2].zfill(2)+x[3].zfill(2) for x in datetime_np]
 
@@ -76,4 +77,4 @@ cols = ["invoice_no", "stock_code", "description", "quantity", "invoice_date", "
 
 df = pd.DataFrame(list(zip(invoice_no, stock_code, description, quantity, invoice_date, unit_price, customer_id, country)), columns=cols)
 
-df.to_csv('/home/isamu/workplace/sample_data/sales.csv', index=False)
+df.to_csv(os.path.join(os.getcwd(), 'sales.csv'), index=False)
