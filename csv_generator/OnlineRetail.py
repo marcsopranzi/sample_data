@@ -3,8 +3,9 @@ from datetime import datetime
 import pandas as pd
 import random
 import os
+import sys
 
-list_size = 10000
+list_size =  int(sys.argv[1])
 
 countries = ["United Kingdom",
             "France",
@@ -77,4 +78,4 @@ cols = ["invoice_no", "stock_code", "description", "quantity", "invoice_date", "
 
 df = pd.DataFrame(list(zip(invoice_no, stock_code, description, quantity, invoice_date, unit_price, customer_id, country)), columns=cols)
 
-df.to_csv(os.path.join(os.getcwd(), 'sales.csv'), index=False)
+df.to_csv(os.path.join(os.getcwd(), 'sales.log'), index=False, header=False)
