@@ -5,7 +5,10 @@ import random
 import os
 import sys
 
-list_size =  int(sys.argv[1])
+list_size = 1000
+
+if (len(sys.argv) > 1):
+    list_size = int(sys.argv[1])
 
 countries = ["United Kingdom",
             "France",
